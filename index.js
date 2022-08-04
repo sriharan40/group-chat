@@ -26,7 +26,7 @@ io.on('connection', socket => {
     socket.join(user.room);
 
     // General welcome
-    socket.emit('message', formatMessage("RefArch", 'Messages are limited to this room! '));
+    socket.emit('message', formatMessage("Group Shopping", 'Messages are limited to this room! '));
 
     // Broadcast everytime users connects
     socket.broadcast
