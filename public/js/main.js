@@ -21,7 +21,7 @@ socket.on('roomUsers', ({ room, users }) => {
 
 // Message from server
 socket.on('message', (message) => {
-  console.log(message);
+  console.log(decodeURIComponent(document.cookie).split('; ')[0].split('=')[1]);
   outputMessage(message);
 
   // Scroll down
