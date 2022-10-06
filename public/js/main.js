@@ -52,6 +52,13 @@ chatForm.addEventListener('submit', (e) => {
 function outputMessage(message) {
   const div = document.createElement('div');
   div.classList.add('message');
+  if(username == message.username){
+    div.classList.add('sender');
+  }else if(message.username == "Group Shopping"){
+    div.classList.add('notification');
+  }else{
+    div.classList.add('reciever');
+  }
   const p = document.createElement('p');
   p.classList.add('meta');
   p.innerText = message.username;
