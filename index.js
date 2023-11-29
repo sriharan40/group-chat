@@ -1,8 +1,9 @@
-
+const OpenAI = require('openai');
 const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
+const openai = new OpenAI({ apiKey: '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' });
 const formatMessage = require('./helpers/formatDate')
 const {
   getActiveUser,
@@ -48,6 +49,20 @@ io.on('connection', socket => {
     const user = getActiveUser(socket.id);
 
     io.to(user.room).emit('message', formatMessage(user.username, msg));
+
+  async function main() {
+
+    const completion = await openai.chat.completions.create({
+      messages: [{ role: "system", content: msg }],
+      model: "gpt-3.5-turbo",
+    });
+
+    io.to(user.room).emit('message', formatMessage("Gen AI", completion.choices[0].message.content));
+
+  }
+
+  main();
+
   });
 
   // Runs when client disconnects
