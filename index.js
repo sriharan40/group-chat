@@ -3,7 +3,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
-const openai = new OpenAI({ apiKey: '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' });
+const openai = new OpenAI({ apiKey: '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' });
 const formatMessage = require('./helpers/formatDate')
 const {
   getActiveUser,
